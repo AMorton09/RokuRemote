@@ -1,2 +1,21 @@
 <h1>HELLO TEST PAGE</h1>
-
+<h2>
+    <form  method="post" action="/input">
+        <button type="submit">Enter</button>
+        <input name="input"  id="input" />
+    </form>
+</h2>
+{{#each commands}}
+<h3>
+    <form  method="post" action="/press">
+        <button type="submit">{{this}}</button>
+        <input name="cmd" hidden="true"   id="cmd" value={{this}}/>
+    </form>
+</h3>
+{{/each}}
+{{#each apps}}
+    <form  method="post" action="/launchApp">
+        <button type="submit">{{this.name}}</button>
+        <input name="appID" hidden="true"   id="appID" value={{this.id}}/>
+    </form>
+{{/each}}
