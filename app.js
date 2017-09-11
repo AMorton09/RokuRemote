@@ -11,25 +11,29 @@ app.listen('3000');
 
 console.log("im alive");
 
-app.get('/',function (req, res) {
+app.get('/', (req, res) => {
 
+    let dev = {};
+    let devTest = {
+        "1":"test1",
+        "2":"test2"
 
+    };
+    
     Roku.discover(function (devices) {
 
         console.log(devices);
 
-
-
-    });
-
-    const roku = new Roku(devices[0].address);
-    roku.apps(function (err, apps) {
-        if (err){
-            console.log(err);
-        }
-        console.log(apps);
+        dev = devices;
 
     });
 
-    res.render('home')
-})
+
+
+    res.render('home',{devices: devTest})
+});
+
+app.post('/device', (req,res)=>{
+
+
+});
