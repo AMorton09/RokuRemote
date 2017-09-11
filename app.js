@@ -18,17 +18,18 @@ app.get('/',function (req, res) {
 
         console.log(devices);
 
-        const roku = new Roku(devices.address);
-        roku.apps(function (err, apps) {
-            if (err){
-                console.log(err);
-            }
-            console.log(apps);
 
-        });
 
     });
 
+    const roku = new Roku(devices[0].address);
+    roku.apps(function (err, apps) {
+        if (err){
+            console.log(err);
+        }
+        console.log(apps);
+
+    });
 
     res.render('home')
 })
